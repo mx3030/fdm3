@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Arbeitsblatt Funktionen</title>
+        <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+        <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src=lib/star-rating-svg/src/jquery.star-rating-svg.js></script>
+        <link rel="stylesheet" type="text/css" href="lib/star-rating-svg/src/css/star-rating-svg.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css" media="screen" title="no title" charset="utf-8"> 
+        <link rel="stylesheet" href="custom.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body >
+        <div id="nav-container" class="container" style="margin-bottom:15vh">
+            <nav id="ab" class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item" style="padding-right:20px">
+                    <a class="nav-link" href="#">Arbeitsblatt Funktionen</a>
+                    </li>
+                </ul>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link" href="#aufgabe1">Aufgabe 1</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#aufgabe1a">a)</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#aufgabe1b">b)</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#aufgabe1c">c)</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#aufgabe1d">d)</a>
+                        </li>
+
+                        <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#aufgabe2">Aufgabe 2</a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                        <!--<a class="nav-link" href="#aufgabe2a">a)</a>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </div>
+            </nav>
+        </div>
+
+        <div data-bs-spy="scroll" data-bs-target="#ab">
+
+            <div id="aufgabe1a" class="container">    
+                <h2 class="text-center">Der optimale Behälter</h2>
+                <p>a) Baue einen Behälter aus einem Stück DIN A4 Papier. Verwende die dargestellte Faltskizze.</p>
+                <img src="img/faltbild.jpg" class="mx-auto d-block w-50">
+            </div>
+
+            <div id="aufgabe1b" class="container my-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>b) Bestimme das Volumen deines Behälters mit der Formel</p>
+                        <div id="game1" class="mt-2">
+                            <ul id="v_formel" class="list-group list-group-horizontal"> 
+                                <li class="list-group-item">Breite</li>
+                                <li class="list-group-item pos1">Volumen</li>
+                                <li class="list-group-item pos3">\( \cdot \)</li>
+                                <li class="list-group-item">Höhe</li>
+                                <li class="list-group-item">Länge</li>
+                                <li class="list-group-item pos2">\( = \)</li>
+                                <li class="list-group-item pos5">\( \cdot \)</li>
+                            </ul>
+                        </div>
+                        <p class="mt-4">Einfacher: \(  \quad V=h \cdot b \cdot l\)</p>
+                        <p class="mt-2">Trage dein Ergebnis in die Tabelle ein. Sammle drei weitere Ergebnisse aus deiner Klasse. Kontrolliert euch gegenseitig.</p> 
+                        <p>Welche Aussagen treffen zu?</p>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Es gibt unterschiedliche Ergebnisse.</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Unterschiedliche Ergebnisse entstehen nur durch Rechenfehler.</label>
+                        </div>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Es gibt eine optimale Form mit größtem Volumen.</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Es gibt Behälter mit gleicher Höhe aber unterschiedlichem Volumen.</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Man kann einen Behälter mit einer Höhe von \(11\) cm bauen.</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Bei einer Höhe von \(10.5\) cm erhält man das größte Volumen.</label>
+                        </div>
+
+                        <div class="text-center">
+                            <button id="check_1b_switches" type="button" class="btn btn-primary btn-sm w-30 m-3 justify-content-center">Prüfe Eingabe</button>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <table id="table_1b" class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">\(h\, [\text{cm}]\)</th>
+                                    <th scope="col">\(b\, [\text{cm}]\)</th>
+                                    <th scope="col">\(l\, [\text{cm}]\)</th>
+                                    <th scope="col">\(V\, [\text{cm}]\)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="zeile1">
+                                    <th scope="row">
+                                        <div class="form-group">
+                                            <input id="zeile1_name" type="text" class="form-control bg-transparent">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile1_h" type="text" class="form-control bg-transparent zeile1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile1_b" type="text" class="form-control bg-transparent zeile1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile1_l" type="text" class="form-control bg-transparent zeile1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile1_v" type="text" class="form-control bg-transparent zeile1" oninput="check_1b_table_row(1)">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr id="zeile2">
+                                    <th scope="row">
+                                        <div class="form-group">
+                                            <input id="zeile2_name" type="text" class="form-control bg-transparent">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile2_h" type="text" class="form-control bg-transparent zeile2">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile2_b" type="text" class="form-control bg-transparent zeile2">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile2_l" type="text" class="form-control bg-transparent zeile2">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile2_v" type="text" class="form-control bg-transparent zeile2" oninput="check_1b_table_row(2)">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr id="zeile3">
+                                    <th scope="row">
+                                        <div class="form-group">
+                                            <input id="zeile3_name" type="text" class="form-control bg-transparent">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile3_h" type="text" class="form-control bg-transparent zeile3">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile3_b" type="text" class="form-control bg-transparent zeile3">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile3_l" type="text" class="form-control bg-transparent zeile3">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile3_v" type="text" class="form-control bg-transparent zeile3" oninput="check_1b_table_row(3)">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr id="zeile4">
+                                    <th scope="row">
+                                        <div class="form-group">
+                                            <input id="zeile4_name" type="text" class="form-control bg-transparent">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile4_h" type="text" class="form-control bg-transparent zeile4">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile4_b" type="text" class="form-control bg-transparent zeile4">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile4_l" type="text" class="form-control bg-transparent zeile4">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input id="zeile4_v" type="text" class="form-control bg-transparent zeile4" oninput="check_1b_table_row(4)">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="aufgabe1c" class="container my-5">
+                <div class="row">
+                    <div class="col-lg-6 mb-3"> 
+                        <p>c) Vervollständige die Skizze des Faltvorgangs. Setze dazu die Größen (\(h, b, l\)) in die passenden Position (blau markierte Linien) und bestimme die Seitenlängen.</p>
+                        <div class="text-center">
+                            <button id="check_1c_ggb" type="button" class="btn btn-primary btn-sm w-30 mb-3" onclick="check_1c_ggb()">Prüfe Eingabe</button>
+                        </div>
+
+                        <p>Mit welcher Formel lässt sich die Breite \(b\) bestimmen?</p>
+
+                        <div class="input-group mb-3 w-50">
+                            <span class="input-group-text" id="l_formel">\(b=\)</span>
+                            <span id="mathfield_b" class="form-control">  
+                                <!--<input type="text" class="form-control">-->
+                            </span>
+                        </div>
+
+                        <p>Mit welcher Formel lässt sich die Länge \(l\) bestimmen?</p>
+
+                        <div class="input-group mb-3 w-50">
+                            <span class="input-group-text" id="l_formel">\(l=\)</span>
+                            <span id="mathfield_l" class="form-control">  
+                                <!--<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" style="background-color:green">-->
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="ggb_container col-lg">
+                        <div class="ggb" id="applet_container_1c" style="overflow:hidden"></div>
+                        <div class="form-group form-inline" style="width:30%;margin:0 auto">
+                            <div id="input_help" class="input-group mb-3"> 
+                                <div class="input-group-prepend"> 
+                                    <button id="add_element_button" type="submit" class="btn btn-secondary rounded-0" onclick="add_element()"> 
+                                        <i class="fas fa-plus-square rounded-0"></i>
+                                    </button>
+                                </div>
+                                <input id="text_value" type="text" class="form-control rounded-0 shadow-none" placeholder="">
+                                <div class="input-group-append"> 
+                                    <button id="remove_element_button" type="submit" class="btn btn-secondary rounded-0" onclick="remove_element()"> 
+                                        <i class="fas fa-minus-square rounded-0"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="aufgabe1d" class="container">
+                <div class="row mb-3">
+                    <p>d) Verwende die Formeln aus b) und c) um die Tabelle automatisch zu füllen. Verwende \(0.5\) cm Schritte für die Höhe \(h\). 
+                    <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left:5px">
+                        Hilfe
+                    </a>
+                    <br>Achte auf eine sinnvolle Darstellung.
+                    <button id="check_1d_table" type="button" class="btn btn-primary btn-sm" onclick="check_1d_table()">Prüfe Eingabe</button>
+                    </br> 
+                    </p>
+                    <div class="collapse mb-3" id="collapseExample">
+                        <div class="card card-body">
+                            <video height="200" controls>
+                            <source src="video/help.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <p>Das Volumen \(V\) wird durch die Wahl von
+                    <input id="check_1d_h" class="form-control-sm" style="display:inline; width:50px; margin-left:2px; margin-right:2px" oninput="check_1d_h()">
+                    eindeutig festgelegt. 
+                    </p>
+                    <div id="feedback_target">
+                        <span>Trage drei beliebige Punkte in das Koordinatensystem ein.</span>
+                    </div>
+                    <p>
+                    Drücke auf den
+                    <button id="draw_table_text" type="button" class="btn btn-outline-dark btn-sm" onclick="draw_table()">Zeichnen</button>
+                    -Button um die gesamte Tabelle grafisch im Koordinatensystem darzustellen.
+                    </p>
+                    <p>Verfeinere die Tabelle (\(0.1\) cm Schritte) und bestimme die Abmessungen des Behälters mit maximalem Volumen. </p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 mb-3"> 
+                        <div id="switch_div">
+                            <div class="ggb" id="applet_container_1d" style="overflow:hidden"></div>
+                        </div>
+                        <div class="mt-3">
+                            <button id="switch2sketch" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="switch2sketch()">Skizze</button>
+                            <button id="switch2table" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" style="display:none" onclick="switch2table()">Tabelle</button>
+                            <button id="clear_1d_table" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="clear_1d_table()">Löschen</button>
+                            <button id="draw_table" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="draw_table()">Zeichnen</button>
+                            <!--<button id="test" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="test()">test</button>-->
+                        </div>
+                    </div>
+                    <div class="col-lg-6 position-relative">
+                        <div class="ggb" id="applet_container_1e" style="overflow:hidden"></div>
+                        <span id="feedback"class="p-1 w-50 position-absolute text-center" style="display:none;top:10%;right:5%;background:#ff8080">Es fehlen noch 3 Punkte</span>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div id="aufgabe1e" class="container mt-5">-->
+                <!--<p>d)</p>-->
+                <!--<p>Finde eine Formel für das Volumen, die nur von der Höhe \(h\) abhängt.</p>-->
+                <!--<div class="input-group mb-3 w-50">-->
+                    <!--<span class="input-group-text" id="basic-addon1">\(V(h)=\)</span>-->
+                    <!--<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">-->
+                    <!--</div>-->
+                <!--<p>Liegt eine solche eindeutige Abhängigkeit zwischen zwei Größen vor, spricht man auch von einer Funktion und schreibt \(V(h)\).</p>-->
+                <!--<p>Trage fünf Punkte aus c) in das Koordinatensystem ein.</p>-->
+                <!--<p>Drücke auf den Zeichnen-Button um den Funktionsgraph zu erhalten. Bewege entlang des Graphs um zu sehen, wie sich die Abmessungen des Behälters verändern.</p>-->
+                <!--<div id="ggb_1e" class="ggb_container w-50">-->
+                    <!--</div>-->
+                <!--</div>-->
+        </div>
+
+        <div id="points" class="container m-5 text-center">
+            <p>Score:</p>
+            <div class="my-rating"></div> 
+        </div>
+
+    </div>
+
+    <script src="parameters.js"></script>
+    <script src="ex.js"></script>
+
+    </body>
+</html>

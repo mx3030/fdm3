@@ -65,8 +65,8 @@
         <div data-bs-spy="scroll" data-bs-target="#ab">
 
             <div id="aufgabe1a" class="container">    
-                <h2 class="text-center">Der optimale Behälter</h2>
-                <p>a) Baue einen Behälter aus einem Stück DIN A4 Papier. Verwende die dargestellte Faltskizze.</p>
+                <h2 class="text-center">Die Kaffeebox</h2>
+                <p>a) Wir brauchen eine neue Box für den Kaffeevorrat. Baue ihm einen passenden Behälter aus einem Stück DIN A4 Papier. Verwende die dargestellte Faltskizze.</p>
                 <img src="img/faltbild.jpg" class="mx-auto d-block w-50">
             </div>
 
@@ -86,36 +86,41 @@
                             </ul>
                         </div>
                         <p class="mt-4">Einfacher: \(  \quad V=h \cdot b \cdot l\)</p>
-                        <p class="mt-2">Trage dein Ergebnis in die Tabelle ein. Sammle drei weitere Ergebnisse aus deiner Klasse. Kontrolliert euch gegenseitig.</p> 
-                        <p>Welche Aussagen treffen zu?</p>
+                        <p class="mt-2">Trage dein Ergebnis in die Tabelle ein. Passt die Kaffeemenge von \(1120 \,\, cm^3\) in deinen Behälter?</p>
+                        <p>Sammle drei weitere Ergebnisse aus deiner Klasse. Kontrolliert euch gegenseitig.</p>          
+                        <p>Welche Aussagen sind deiner Meinung nach falsch oder richtig?</p>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckDefault">Es gibt unterschiedliche Ergebnisse.</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Unterschiedliche Ergebnisse entstehen nur durch Rechenfehler.</label>
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Wenn die Höhe h größer wird, wird auch das Volumen größer.</label>
                         </div>
 
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Es gibt eine optimale Form mit größtem Volumen.</label>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Je niedriger die Box desto größer das Volumen.</label>
                         </div>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Es gibt Behälter mit gleicher Höhe aber unterschiedlichem Volumen.</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Man kann einen Behälter mit einer Höhe von \(11\) cm bauen.</label>
-                        </div>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Bei einer Höhe von \(10.5\) cm erhält man das größte Volumen.</label>
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Wenn die Höhe h größer wird, wird die Breite und die Länge kleiner. </label>
                         </div>
 
-                        <div class="text-center">
-                            <button id="check_1b_switches" type="button" class="btn btn-primary btn-sm w-30 m-3 justify-content-center">Prüfe Eingabe</button>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Es gibt verschiedene Boxen mit gleichem Volumen.</label>
+                        </div>
+
+
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Es gibt nur eine Box mit dem größten Volumen.</label>
+                        </div>
+
+                        <div class="mt-4">
+                            <p>Ob deine Vermutungen stimmen kannst du herausfinden wenn du auf Weiter drückst.</p>
+                            <div class="text-center">
+
+                                <button id="check_1b_switches" type="button" class="btn btn-primary btn-sm w-30 m-3" onclick="move_on()">Weiter</button>
+                            </div>
                         </div>
 
                     </div>
@@ -248,7 +253,7 @@
             <div id="aufgabe1c" class="container my-5">
                 <div class="row">
                     <div class="col-lg-6 mb-3"> 
-                        <p>c) Vervollständige die Skizze des Faltvorgangs. Setze dazu die Größen (\(h, b, l\)) in die passenden Position (blau markierte Linien) und bestimme die Seitenlängen.</p>
+                        <p>c) Vervollständige die Skizze des Faltvorgangs. Setze dazu die Größen und die Faltlinien in die passenden Positionen .</p>
                         <div class="text-center">
                             <button id="check_1c_ggb" type="button" class="btn btn-primary btn-sm w-30 mb-3" onclick="check_1c_ggb()">Prüfe Eingabe</button>
                         </div>
@@ -270,109 +275,171 @@
                                 <!--<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" style="background-color:green">-->
                             </span>
                         </div>
+
+                        <div class="row mt-4 g-0">
+                            <div class="col-7 d-flex align-items-center">
+                                <p>Wie groß kann \(h\) maximal werden?</p>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3 w-75">
+                                    <span class="input-group-text" >\(h<\)</span>
+                                    <input id="h_max_formel" type="text" class="form-control">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row g-0">
+                            <div class="col-7 d-flex align-items-center">
+                                <p>Wie groß kann \(h\) minimal werden?</p>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3 w-75">
+                                    <span class="input-group-text">\(h>\)</span>
+                                    <input id="h_min_formel"type="text" class="form-control">
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
                     </div>
 
                     <div class="ggb_container col-lg">
-                        <div class="ggb" id="applet_container_1c" style="overflow:hidden"></div>
-                        <div class="form-group form-inline" style="width:30%;margin:0 auto">
-                            <div id="input_help" class="input-group mb-3"> 
-                                <div class="input-group-prepend"> 
-                                    <button id="add_element_button" type="submit" class="btn btn-secondary rounded-0" onclick="add_element()"> 
-                                        <i class="fas fa-plus-square rounded-0"></i>
-                                    </button>
-                                </div>
-                                <input id="text_value" type="text" class="form-control rounded-0 shadow-none" placeholder="">
-                                <div class="input-group-append"> 
-                                    <button id="remove_element_button" type="submit" class="btn btn-secondary rounded-0" onclick="remove_element()"> 
-                                        <i class="fas fa-minus-square rounded-0"></i>
-                                    </button>
-                                </div>
+                        <div class="ggb" id="applet_container_1c" style="overflow:hidden"></div> 
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="aufgabe1d" class="container my-5">
+                <div class="row mb-3">
+                    <p>d) Mit den Ergebnissen aus b) und c) kann die Tabelle gefüllt werden. Verwende 1 cm Schritte für die Höhe \(h\). Achte auf eine sinnvolle Darstellung.
+
+
+                    <button id="check_1d_table" type="button" class="btn btn-primary btn-sm" style="margin-left:5px" onclick="check_1d_table()">Prüfe Eingabe</button>
+
+                    </p>
+
+                    <div id="feedback_target">
+                        <span>Trage die Punkte zunächst von Hand in das Koordinatensystem ein.</span>
+                        <span id="feedback" style="display:none;top:10%;right:5%;background:#ff8080">Es fehlen noch 3 Punkte</span>
+                    </div> 
+                    <div>
+                        <p>
+                        Drücke auf den
+                        <button id="draw_table_text" type="button" class="btn btn-outline-dark btn-sm" onclick="draw_table()">Zeichnen</button>
+                        -Button um die gesamte Tabelle automatisch im Koordinatensystem darzustellen.
+                        </p>
+                        <p>Verfeinere die Tabelle (0.5 cm Schritte). Verwende dazu die Möglichkeiten der Tabellenkalkulation. 
+                        <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left:5px">
+                            Hilfe
+                        </a>
+                        </p>
+                        <div class="collapse mb-3" id="collapseExample">
+                            <div class="card card-body">
+                                <video height="200" controls>
+                                <source src="video/help.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                                </video>
                             </div>
                         </div>
 
                     </div>
 
-                </div>
-            </div>
+                    <div class="row">
+                        <div class="col-lg-6 mb-3"> 
+                            <div id="switch_div">
+                                <div class="ggb" id="applet_container_1d" style="overflow:hidden"></div>
+                                <div class="ggb" id="applet_container_1c_light" style="display:none;overflow:hidden"></div>
+                            </div>
 
-            <div id="aufgabe1d" class="container">
-                <div class="row mb-3">
-                    <p>d) Verwende die Formeln aus b) und c) um die Tabelle automatisch zu füllen. Verwende \(0.5\) cm Schritte für die Höhe \(h\). 
-                    <a class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-left:5px">
-                        Hilfe
-                    </a>
-                    <br>Achte auf eine sinnvolle Darstellung.
-                    <button id="check_1d_table" type="button" class="btn btn-primary btn-sm" onclick="check_1d_table()">Prüfe Eingabe</button>
-                    </br> 
-                    </p>
-                    <div class="collapse mb-3" id="collapseExample">
-                        <div class="card card-body">
-                            <video height="200" controls>
-                            <source src="video/help.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
+                            <div class="input-group mt-3">
+                                <button id="switch2sketch" type="button" class="btn btn-outline-dark btn-sm rounded-0" onclick="switch2sketch()">Skizze</button>
+                                <button id="switch2table" type="button" class="btn btn-outline-dark btn-sm rounded-0" style="display:none" onclick="switch2table()">Tabelle</button>
+                                <button id="draw_table" type="button" class="btn btn-outline-dark btn-sm rounded-0" onclick="draw_table()">Zeichnen</button> 
+                                <button id="clear_table" type="button" class="btn btn-outline-dark btn-sm rounded-0" onclick="clear_table()">Löschen</button> 
+                                <button id="fill_table" type="button" class="btn btn-outline-dark btn-sm" onclick="fill_table()">Fill</button>
+                                <div style="width:5%">
+                                </div> 
+                                <button id="marker_button" type="button" class="btn btn-outline-dark btn-sm rounded-0" onclick="marker()">Marker</button>
+                                <div id="marker_input_div" style="width:50px">
+                                    <input id="marker_input" type="text" class="form-control form-control-sm rounded-right rounded-0" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                </div>
 
-                    <p>Das Volumen \(V\) wird durch die Wahl von
-                    <input id="check_1d_h" class="form-control-sm" style="display:inline; width:50px; margin-left:2px; margin-right:2px" oninput="check_1d_h()">
-                    eindeutig festgelegt. 
-                    </p>
-                    <div id="feedback_target">
-                        <span>Trage drei beliebige Punkte in das Koordinatensystem ein.</span>
-                    </div>
-                    <p>
-                    Drücke auf den
-                    <button id="draw_table_text" type="button" class="btn btn-outline-dark btn-sm" onclick="draw_table()">Zeichnen</button>
-                    -Button um die gesamte Tabelle grafisch im Koordinatensystem darzustellen.
-                    </p>
-                    <p>Verfeinere die Tabelle (\(0.1\) cm Schritte) und bestimme die Abmessungen des Behälters mit maximalem Volumen. </p>
-                </div>
+                            </div>
 
-                <div class="row">
-                    <div class="col-lg-6 mb-3"> 
-                        <div id="switch_div">
-                            <div class="ggb" id="applet_container_1d" style="overflow:hidden"></div>
+                            <!--<div class="col border input-group">-->
+                                <!--<div class="input-group-prepend">-->
+                                    <!--<button id="marker" type="button" class="btn btn-outline-dark btn-sm rounded-0" onclick="marker()">Marker</button>-->
+                                    <!--</div>-->
+                                <!--<div style="width:20%">-->
+                                    <!--<input type="text" class="form-control form-control-sm rounded-right rounded-0" placeholder="" aria-label="" aria-describedby="basic-addon1">-->
+                                    <!--</div>-->
+                                <!--</div>-->
                         </div>
-                        <div class="mt-3">
-                            <button id="switch2sketch" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="switch2sketch()">Skizze</button>
-                            <button id="switch2table" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" style="display:none" onclick="switch2table()">Tabelle</button>
-                            <button id="clear_1d_table" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="clear_1d_table()">Löschen</button>
-                            <button id="draw_table" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="draw_table()">Zeichnen</button>
-                            <!--<button id="test" type="button" class="btn btn-outline-dark btn-sm w-30 mb-3" onclick="test()">test</button>-->
+                        <div class="col-lg-6 position-relative">
+                            <div class="ggb" id="applet_container_1e" style="overflow:hidden"></div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 position-relative">
-                        <div class="ggb" id="applet_container_1e" style="overflow:hidden"></div>
-                        <span id="feedback"class="p-1 w-50 position-absolute text-center" style="display:none;top:10%;right:5%;background:#ff8080">Es fehlen noch 3 Punkte</span>
                     </div>
                 </div>
             </div>
 
-            <!--<div id="aufgabe1e" class="container mt-5">-->
-                <!--<p>d)</p>-->
-                <!--<p>Finde eine Formel für das Volumen, die nur von der Höhe \(h\) abhängt.</p>-->
-                <!--<div class="input-group mb-3 w-50">-->
-                    <!--<span class="input-group-text" id="basic-addon1">\(V(h)=\)</span>-->
-                    <!--<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">-->
-                    <!--</div>-->
-                <!--<p>Liegt eine solche eindeutige Abhängigkeit zwischen zwei Größen vor, spricht man auch von einer Funktion und schreibt \(V(h)\).</p>-->
-                <!--<p>Trage fünf Punkte aus c) in das Koordinatensystem ein.</p>-->
-                <!--<p>Drücke auf den Zeichnen-Button um den Funktionsgraph zu erhalten. Bewege entlang des Graphs um zu sehen, wie sich die Abmessungen des Behälters verändern.</p>-->
-                <!--<div id="ggb_1e" class="ggb_container w-50">-->
-                    <!--</div>-->
+            <div id="aufgabe1e" class="container my-5">
+                <p>e) Gebe die Abmessungen (in cm) eines Behälters an, in den die Menge an Kaffee hineinpasst.</p>
+                <div class="row my-2 justify-content-start g-1">
+                    <div class="col-2">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >\(h=\)</span>
+                            <input id="h_max_formel" type="text" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="col-2">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >\(b=\)</span>
+                            <input id="h_max_formel" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >\(l=\)</span>
+                            <input id="h_max_formel" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <p>Überprüfe bzw. korrigiere deine Vermutungen aus Aufgabe 1b).
+
+                <button id="check_1b_ans" type="button" class="btn btn-primary btn-sm" style="margin-left:5px" onclick="check_1b_ans()">Prüfe Eingabe</button>
+                </p>
+            </div>
+
+            <div id="aufgabe1f" class="container">
+                <p>f) Gebe eine Formel für das Volumen \(V\) des Behälters an, die nur noch von \(h\) abhängt. Man sagt dann, das Volumen \(V\) ist eine Funktion der Höhe \(h\) und schreibt \(V(h)\). </p>
+                <div class="input-group mb-3 w-50">
+                    <span class="input-group-text" id="l_formel">\(V(h)=\)</span>
+                    <span id="mathfield_v" class="form-control">  
+                        <!--<input type="text" class="form-control">-->
+                    </span>
+                </div>
+                <p>Dieser eindeutige Zusammenhang kann als Kurve im Koordinatensystem dargestellt werden.
+
+                <button id="plot" type="button" class="btn btn-outline-dark btn-sm" style="margin-left:5px" onclick="plot()">Zeichnen</button>
+                </p> 
+
+            </div>
+
+
+            <!--<div id="points" class="container m-5 text-center">-->
+                <!--<p>Score:</p>-->
+                <!--<div class="my-rating"></div> -->
                 <!--</div>-->
+
         </div>
 
-        <div id="points" class="container m-5 text-center">
-            <p>Score:</p>
-            <div class="my-rating"></div> 
-        </div>
-
-    </div>
-
-    <script src="parameters.js"></script>
-    <script src="ex.js"></script>
+        <script src="parameters.js"></script>
+        <script src="ex.js"></script>
 
     </body>
 </html>

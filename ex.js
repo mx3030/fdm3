@@ -1,11 +1,5 @@
 function ggbOnInit(){
-    var start_height = '6';
-    console.log(app_1c.evalCommand("SetCoords(ul,"+start_height+",0)"));
 
-    //app_1d.registerUpdateListener(updateListener_1d);
-    //app_1e.registerUpdateListener(updateListener_3_points);
-
-    //app_1d.registerAddListener("add2list");
 };
 
 /*ex 1b*/
@@ -69,180 +63,91 @@ function check_1b_table_row(a){
 
 
 //ex 1c)
-var element_number=0;
-var check_last_element=false;
-function add_element(){
-    if(element_number<0){
-        element_number=0;
-    }
-    var value = $("#text_value").val();
-    app_1c.evalCommand("SetCoords(p_"+element_number+",10,10)");
-    app_1c.setTextValue("j_"+element_number,value);
-    app_1c.setVisible("j_"+element_number,true);
-    app_1c.setVisible("p_"+element_number,true);
-    if(element_number<7){    
-        element_number++;
-    }else{
-        check_last_element=true;
-    };
-    console.log(element_number);
-};
-
-function remove_element(){  
-    if(check_last_element==true){
-        check_last_element=false;
-    }else{
-        element_number--;
-    };
-    app_1c.setVisible("j_"+element_number,false);
-    app_1c.setVisible("p_"+element_number,false);
-    console.log(element_number);
-}
 
 function check_1c_ggb(){
-    var free_h1, free_h2, free_h3, free_h4, free_b, free_l;
-    free_h1=free_h2=free_h3=free_h4=free_b=free_l=true;
-    var check=true;
-    var value = app_1c.getValueString("j_0");
-    console.log(value);
-    var check_pos = app_1c.evalCommandCAS("IsInRegion(p_0,sol_h1)");
-    console.log(check_pos);
-    for (var num=0;num<8;num++){
-        var value = app_1c.getValueString("j_"+num);
-        console.log(value);
-        if(app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_h1)")=='true'){
-            console.log("tekl");
-            if(value!='h' || free_h1==false){
+    // variables are true if sol_hi is free and false if used
+    var free_sol_h0, free_sol_h1, free_sol_h2, free_sol_h3, free_sol_b1, free_sol_l1, free_sol_b, free_sol_l;
+    free_sol_h0=free_sol_h1=free_sol_h2=free_sol_h3=free_sol_b1=free_sol_l1=free_sol_b=free_sol_l = true;
+    var check = true;
+    // check text fields ans_i with h (connect to point p_i)
+    for (var i=0; i<4;i++){
+        if(app_1c.evalCommandCAS("IsInRegion(p_"+i+",sol_h0)")=='true'){
+            if(free_sol_h0==false){
+                console.log("h0 not free");
                 check=false;
                 break;
             } else {
-                free_h1=false;
+                free_sol_h0=false;
             }
-        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_h2)")=='true'){
-            if(value!='h' || free_h2==false){
+        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+i+",sol_h1)")=='true'){
+            if(free_sol_h1==false){
+                console.log("h1 not free");
                 check=false;
                 break;
             } else {
-                free_h2=false;
+                free_sol_h1=false;
             }
-        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_h3)")=='true'){
-            if(value!='h' || free_h3==false){
+        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+i+",sol_h2)")=='true'){
+            if(free_sol_h2==false){
+                console.log("h2 not free");
                 check=false;
                 break;
             } else {
-                free_h3=false;
+                free_sol_h2=false;
             }
-        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_h4)")=='true'){
-            if(value!='h' || free_h4==false){
+        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+i+",sol_h3)")=='true'){
+            if(free_sol_h3==false){
+                console.log("h3 not free");
                 check=false;
                 break;
             } else {
-                free_h4=false;
+                free_sol_h3=false;
             }
-        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_b1)")=='true'){
-            if(value!='b' || free_b==false){
-                check=false;
-                break;
-            } else {
-                free_b=false;
-            }
-        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_l1)")=='true'){
-            if(value!='l' || free_l==false){
-                check=false;
-                break;
-            } else {
-                free_l=false;
-            }
-        } else if (app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_b_ges)")=='true'){
-            if(value!='21'){
-                check=false;
-                break;
-            } 
-        } else if(app_1c.evalCommandCAS("IsInRegion(p_"+num+",sol_l_ges)")=='true'){
-            if(value!='29.7'){
-                check=false;
-                break;
-            } 
         }
     };
-    if(check==false || (free_h1==true || free_h2==true || free_h3==true || free_h4==true || free_b==true || free_l==true) ){
-        console.log("Fehler.");
-        //$('#check_1c_ggb').addClass('btn-danger');
-    } else {
-        console.log("Richtig.");
-        $('#check_1c_ggb').removeClass('btn-outline-dark');
-        $('#check_1c_ggb').addClass('btn-success disabled');
-        for(var i=0;i<8;i++){
-            app_1c.setVisible('i_'+i,true);
-            app_1c.setVisible('j_'+i,false);
-            app_1c.setVisible('p_'+i,false);
-        }
-        $("#input_help").css("display","none");
-    }
-
-
-}
-
-function check_1c_ggb_old(){
-    var free_h1, free_h2, free_h3, free_h4, free_b, free_l;
-    free_h1=free_h2=free_h3=free_h4=free_b=free_l=true;
-    var check=true;
-    for (var num=0;num<6;num++){
-        var value = app_1c.getValueString('i_'+num);
-        var pobj='p_'+num;
-        if(parseFloat(app_1c.getValue("Distance("+pobj+",h1)"))<0.001){
-            if(value!='h' || free_h1==false){
-                check=false;
-                console.log(pobj+" keine Höhe (h1) oder bereits belegt.");
-                break;
-            } else {
-                free_h1=false;
-            }
-        } else if(parseFloat(app_1c.getValue("Distance("+pobj+",h2)"))<0.001){
-            if(value!='h' || free_h2==false){
-                check=false;
-                console.log(pobj+" keine Höhe (h2) oder bereits belegt.");
-                break;
-            } else {
-                free_h2=false;
-            }
-        }  else if(parseFloat(app_1c.getValue("Distance("+pobj+",h3)"))<0.001){
-            if(value!='h' || free_h3==false){
-                check=false;
-                console.log(pobj+" keine Höhe (h3) oder bereits belegt.");
-                break;
-            } else {
-                free_h3=false;
-            }
-        } else if(parseFloat(app_1c.getValue("Distance("+pobj+",h4)"))<0.001){
-            if(value!='h' || free_h4==false){
-                check=false;
-                console.log(pobj+" keine Höhe (h4) oder bereits belegt.");
-                break;
-            } else {
-                free_h4=false;
-            }
-        } else if(parseFloat(app_1c.getValue("Distance("+pobj+",b1)"))<0.001){
-            if(value!='b' || free_b==false){
-                check=false;
-                console.log(pobj+" keine Breite oder bereits belegt.");
-                break;
-            } else {
-                free_b=false;
-            }
-        } else if(parseFloat(app_1c.getValue("Distance("+pobj+",l1)"))<0.001){
-            if(value!='l' || free_l==false){
-                check=false;
-                console.log(pobj+" keine Länge oder bereits belegt.");
-                break;
-            } else {
-                free_l=false;
-            }
-        } 
-    }
-    if(app_1c.getValueString('i_6')!="21 cm" || app_1c.getValueString('i_7')!="29.7 cm"){
+    if (app_1c.evalCommandCAS("IsInRegion(p_b1,sol_b1)")=='false'){
         check=false;
+    } else {
+        free_sol_b1=false;
     };
+    if (app_1c.evalCommandCAS("IsInRegion(p_l1,sol_l1)")=='false'){
+        check=false;
+    } else {
+        free_sol_l1=false;
+    };
+    if (app_1c.evalCommandCAS("IsInRegion(p_b,sol_b)")=='false'){
+        check=false;
+    } else {
+        free_sol_b=false;
+    };
+    if (app_1c.evalCommandCAS("IsInRegion(p_l,sol_l)")=='false'){
+        check=false;
+    } else {
+        free_sol_l=false;
+    };
+
+    // check for line position (lu=links unten; lue=links unten eck)
+    var ul_x = app_1c.getXcoord("ul");
+    var ur_x = app_1c.getXcoord("ur");
+    var lu_y = app_1c.getYcoord("lu");
+    var lo_y = app_1c.getYcoord("lo");
+    var lue_x = app_1c.getXcoord("lue");
+    var lue_y = app_1c.getYcoord("lue");
+    var loe_y = app_1c.getYcoord("loe");
+    var rue_x = app_1c.getXcoord("rue");
+    if ((ul_x-lue_x)!=(rue_x-ur_x) || ul_x==ur_x || ul_x==lue_x || ul_x==rue_x){
+        console.log(ul_x);
+        console.log(ur_x);
+        console.log(lue_x);
+        console.log(rue_x);
+        console.log("fehler unten");
+        check = false;
+    } else if ((lu_y-lue_y)!=(loe_y-lo_y) || lu_y==lo_y || lu_y == lue_y || lu_y == loe_y){
+        console.log((lu_y-lue_y)!=(loe_y-lo_y));
+        console.log("fehler links");
+        check = false;
+    }
+
     if(check==false){
         console.log("Fehler.");
         //$('#check_1c_ggb').addClass('btn-danger');
@@ -250,11 +155,28 @@ function check_1c_ggb_old(){
         console.log("Richtig.");
         $('#check_1c_ggb').removeClass('btn-outline-dark');
         $('#check_1c_ggb').addClass('btn-success disabled');
-        for(var i=0;i<8;i++){
-            app_1c.setVisible('i_'+i,true);
-            app_1c.setVisible('input_'+i,false);
-        }
-    }
+        app_1c.setCoords("lu",0,6);
+        app_1c.setCoords("lo",0,14);
+        app_1c.setCoords("ul",6,0);
+        app_1c.setCoords("ur",24,0);
+        app_1c.setVisible("ans0",false);
+        app_1c.setVisible("ans1",false);
+        app_1c.setVisible("ans2",false);
+        app_1c.setVisible("ans3",false);
+        app_1c.setVisible("ans_b",false);
+        app_1c.setVisible("ans_b1",false);
+        app_1c.setVisible("ans_l",false);
+        app_1c.setVisible("ans_l1",false);
+        app_1c.setVisible("end0",true);
+        app_1c.setVisible("end1",true);
+        app_1c.setVisible("end2",true);
+        app_1c.setVisible("end3",true);
+        app_1c.setVisible("end4",true);
+        app_1c.setVisible("end5",true);
+        app_1c.setVisible("end6",true);
+        app_1c.setVisible("end7",true);
+        app_1c.setGridVisible(false);
+    };
 }
 
 var MQ_b = MathQuill.getInterface(2);
@@ -337,35 +259,43 @@ function check_1d_h(){
 }
 
 function check_1d_table(){
+    
     var check=true;
-    var h=0.5;
-    for(var i=0;i<20;i++){
-        if(parseFloat(app_1d.getValue("A"+(2+i)))!=h){
+    var i = 0;
+    var value = app_1d.getValue("A"+(2+i));
+    while(value==value){
+        if (parseFloat(app_1d.getValue("B"+(2+i)))!=(21-2*value)){
             check=false;
             break;
-        } else if (parseFloat(app_1d.getValue("B"+(2+i)))!=(21-2*h)){
-            console.log(app_1d.getValue("B"+(2+i)));
-            console.log((21-2*h).toFixed(1));
+        } else if (parseFloat(app_1d.getValue("C"+(2+i))).toFixed(1)!=(29.7-2*value).toFixed(1)){
             check=false;
             break;
-        } else if (parseFloat(app_1d.getValue("C"+(2+i))).toFixed(1)!=(29.7-2*h).toFixed(1)){
-            console.log(app_1d.getValue("C"+(2+i)));
-            console.log((29.7-2*h).toFixed(1));
-            check=false;
-            break;
-        } else if (parseFloat(app_1d.getValue("D"+(2+i))).toFixed(1)!=(h*(21-2*h)*(29.7-2*h)).toFixed(1)){
-            console.log(app_1d.getValue("D"+(2+i)));
-            console.log((h*(21-2*h)*(29.7-2*h)).toFixed(1));
+        } else if (parseFloat(app_1d.getValue("D"+(2+i))).toFixed(1)!=(value*(21-2*value)*(29.7-2*value)).toFixed(1)){
             check=false;
             break;
         }
-        h=h+0.5;
-    };
+        i++;
+        value=app_1d.getValue("A"+(2+i));
+
+    } 
     if(check==true){
         console.log("richtig");
         $('#check_1d_table').addClass('btn-success disabled')
     } else {
         console.log("falsch"); 
+    };
+}
+
+function fill_table(){
+    console.log("Fülle Tabelle");
+    var h = 0.5;
+    for(var i=0;i<20;i++){
+        var row_number = i+2;
+        var b = 21-2*h;
+        var l = 29.7-2*h;
+        var v = h*b*l;
+        app_1d.evalCommand("FillRow("+row_number+",{"+h+","+b+","+l+","+v+"})");
+        h=h+0.5;
     };
 }
 
@@ -375,30 +305,20 @@ var start_list_length;
 var count_good_points=0;
 
 function check_3_points(){ 
-    $("#feedback").css("display","block");
+    $("#feedback").css("display","inline");
     start_list = app_1e.getAllObjectNames(["Point"]);
     start_list_length=start_list.length;
-    app_1e.registerAddListener(addListener_1e);
-    app_1e.registerUpdateListener(updateListener_1e);
+    app_1e.registerUpdateListener(updateListener_check_3_points);
 }
 
-function addListener_1e(obj){
-    //var value = app_1e.getValueString(obj);
-    //console.log(value);
-};
-
-function updateListener_1e(obj){
+function updateListener_check_3_points(obj){
     var point_list_all=app_1e.getAllObjectNames(["Point"]);
     var point_list=point_list_all.slice(start_list_length);
-    //console.log(point_list);
     for(var i=0;i<point_list.length;i++){
         var point_x = app_1e.getXcoord(point_list[i]);
-        //console.log(point_x);
         var point_y = app_1e.getYcoord(point_list[i]);
-        //console.log(point_y);
         var v = point_x*(21-(2*point_x))*(29.7-(2*point_x));
         var dist = Math.abs(v-point_y);
-        //console.log(dist);
         if(dist<50){
             count_good_points++;
         }
@@ -414,7 +334,7 @@ function updateListener_1e(obj){
         $("#feedback").html("Es fehlt noch 1 Punkt");
         $("#feedback").css("background","#ff8080");
     } else if (count_good_points>=3 && count_good_points==point_list.length){
-        $("#feedback").html("Gut gemacht. Drücken um fortzufahren.");
+        $("#feedback").html("Gut gemacht.");
         $("#feedback").css("background","#D1E7DD");
         $("#feedback").css("cursor","pointer");
         $("#feedback").click(function(){
@@ -430,7 +350,7 @@ function updateListener_1e(obj){
             $("#feedback").css("display","inline-block");
             app_1e.showToolBar(false);
 
-            app_1e.unregisterAddListener(addListener_1e);
+            // stop event listener for check_3_points
             app_1e.unregisterUpdateListener(updateListener_1e);
         });
     } else {
@@ -464,110 +384,126 @@ function draw_table(){
         var v = (h*(21-2*h)*(29.7-2*h)).toFixed(1);
         app_1e.evalCommand("P_"+i+"=("+h+","+v+")");
         app_1e.setLabelVisible("P_"+i,false);
-        app_1e.setColor("P_"+i,102,153,255);
+        var row_number = i+2;
+        if(app_1d.getColor("A"+row_number)=="#FF0000"){
+            app_1e.setColor("P_"+i,255,0,0);
+        } else {
+        app_1e.setColor("P_"+i,0,191,255);
+        };
+        app_1e.setFixed("P_"+i,true,false);
     }
     app_1e.evalCommand("A=Point(list)");
     app_1e.setVisible("A",true);
     app_1e.setVisible("a",true);
     app_1e.setVisible("b",true);
 
-    app_1c.registerObjectUpdateListener("ul","objectUpdateListener_1c");
-    //app_1d.registerClickListener(clickListener);
-    //app_1e.registerAddListener(addListener);
-    //app_1e.registerUpdateListener(updateListener);
-    app_1e.registerObjectUpdateListener("A","objectUpdateListener");
-
+    // register listeners
+    app_1e.registerObjectUpdateListener("A","objectUpdateListener_table");
 };
 
 
-function objectUpdateListener_1c(obj){
-    var obj_x = app_1c.getXcoord(obj);
+// reset table and kill listeners
+function clear_table(){
+    app_1d.reset();
+    app_1e.reset();
+    $('#check_1d_table').removeClass('btn-success disabled')
+    app_1e.unregisterObjectUpdateListener("A","objectUpdateListener_table"); 
+    //app_1c.unregisterObjectUpdateListener("ul","objectUpdateListener_1c");
+    //app_1c_light.unregisterObjectUpdateListener("ul","objectUpdateListener_1c_light");
+};
+
+$('.orange').hide();
+
+$('.gray, .orange').on(
+    'click',
+    function() 
+    {
+        $('.gray, .orange').toggle()
+    }
+);
+
+function switch2sketch(){
+    // switch listener
+    app_1e.unregisterObjectUpdateListener("A","objectUpdateListener_table");
+    app_1c_light.registerObjectUpdateListener("ul","objectUpdateListener_sketch");
+
+    $('#applet_container_1c_light').show();
+    $('#applet_container_1d').hide();
+    $('#switch2table').show();
+    $('#switch2sketch').hide();
+    $('#clear_table').hide();
+    $('#draw_table').hide();
+    $('#fill_table').hide();
+    $('#marker_button').hide();
+    $('#marker_input_div').hide();
+
+
+};
+
+function objectUpdateListener_sketch(obj){
+    var obj_x = app_1c_light.getXcoord(obj);
     app_1e.setCoords("A",obj_x,0);
 }
 
-function objectUpdateListener(obj){
-    console.log(obj);
-    var obj_x = app_1e.getXcoord(obj);
-    console.log(obj_x);
-    if($('#applet_container_1d').is(':visible')){
-        var index = app_1e.evalCommandCAS("IndexOf(("+obj_x+",0),list)");
-        console.log(index);
-        console.log(parseInt(index));
-        var index_int = parseInt(index);
-        if(index_int==index_int){
-            highlight_table_row(index_int+1);
-        }
-    } else {
-        app_1c.setCoords("ul",obj_x,0);        
-    }
+function switch2table(){
+    app_1c_light.unregisterObjectUpdateListener("ul","objectUpdateListener_sketch");
+    app_1e.registerObjectUpdateListener("A","objectUpdateListener_table");
+
+    $('#applet_container_1d').show();
+    $('#applet_container_1c_light').hide();
+    $('#switch2table').hide();
+    $('#switch2sketch').show();
+    $('#draw_table').show();
+    $('#clear_table').show();
+    $('#fill_table').show();
+    $('#marker_button').show();
+    $('#marker_input_div').show();
+
 }
-    
+
+function objectUpdateListener_table(obj){
+    // listener app_1e not working smooth with sketch --> only table
+    var obj_x = app_1e.getXcoord(obj);
+    // sync app_1e only with table
+    var index = app_1e.evalCommandCAS("IndexOf(("+obj_x+",0),list)");
+    var index_int = parseInt(index);
+    if(index_int==index_int){
+        highlight_table_row(index_int+1);
+    } 
+}
 
 var last_row=2;
-
-function highlight_table_row(row_number){
-    
+function highlight_table_row(row_number){ 
     app_1d.evalCommand("SetBackgroundColor(A"+last_row+",white)");
     app_1d.evalCommand("SetBackgroundColor(B"+last_row+",white)");
     app_1d.evalCommand("SetBackgroundColor(C"+last_row+",white)");
     app_1d.evalCommand("SetBackgroundColor(D"+last_row+",white)");
 
-    app_1d.evalCommand("SetBackgroundColor(A"+row_number+",deepskyblue)");
-    app_1d.evalCommand("SetBackgroundColor(B"+row_number+",deepskyblue)");
-    app_1d.evalCommand("SetBackgroundColor(C"+row_number+",deepskyblue)");
-    app_1d.evalCommand("SetBackgroundColor(D"+row_number+",deepskyblue)");
+    app_1d.evalCommand("SetBackgroundColor(A"+row_number+",lightskyblue)");
+    app_1d.evalCommand("SetBackgroundColor(B"+row_number+",lightgray)");
+    app_1d.evalCommand("SetBackgroundColor(C"+row_number+",lightgray)");
+    app_1d.evalCommand("SetBackgroundColor(D"+row_number+",lightskyblue)");
 
     last_row=row_number;
 }
 
-
-
-
-function clear_1d_table(){
-    app_1d.reset();
-    app_1e.reset();
-    //app_1e.unregisterAddListener(addListener);
-    //app_1e.unregisterUpdateListener(updateListener);
-    app_1e.unregisterObjectUpdateListener("A","objectUpdateListener"); 
-    //app_1d.unregisterClickListener(clickListener);
-    app_1c.unregisterObjectUpdateListener("ul","objectUpdateListener_1c");
-};
-
-
-function switch2sketch(){
-    var source_div = document.getElementById("applet_container_1c");   // order: first, second, third
-    var target_div = document.getElementById("switch_div");
-    $("#applet_container_1c").css("display","");
-    $("#applet_container_1d").css("display","none");
-    target_div.appendChild(source_div); // order: third, first, second
-    var state = false;
-    for(var i=0;i<4;i++){
-        app_1c.setVisible("v_"+i,state);
-    };
-    for (var j=0;j<8;j++){
-        app_1c.setVisible("i_"+j,state);
+function marker(){
+    var row_number = $("#marker_input").val();
+    console.log(row_number);
+    var color_state=app_1d.getColor("A"+row_number);
+    console.log(color_state);
+    if(color_state=="#000000"){
+        app_1d.setColor("A"+row_number,255,0,0);
+        app_1d.setColor("B"+row_number,255,0,0);
+        app_1d.setColor("C"+row_number,255,0,0);
+        app_1d.setColor("D"+row_number,255,0,0);
+    } else { 
+        app_1d.setColor("A"+row_number,0,0,0);
+        app_1d.setColor("B"+row_number,0,0,0);
+        app_1d.setColor("C"+row_number,0,0,0);
+        app_1d.setColor("D"+row_number,0,0,0);
     }
-    app_1c.setAxesVisible(true,true);
-
-    $('#switch2table').css("display","inline");
-    $('#switch2sketch').css("display","none");
-    $('#clear_1d_table').css("display","none");
-    $('#draw_table').css("display","none");
-
-
-
-};
-
-function switch2table(){
-    $('#applet_container_1d').css("display","inline");
-    $('#applet_container_1c').css("display","none");
-    $('#switch2sketch').css("display","inline");
-    $('#switch2table').css("display","none");
-    $('#clear_1d_table').css("display","inline");
-    $('#draw_table').css("display","inline");
-
 }
-
 
 /*end*/
 $(".my-rating").starRating({
@@ -577,7 +513,4 @@ $(".my-rating").starRating({
     }
 });
 
-function test(){
-    console.log("test");
-    highlight_table_row(2);
-}
+

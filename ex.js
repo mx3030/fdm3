@@ -53,14 +53,28 @@ function check_1b_table_row(a){
     }else if(Math.abs(l-(29.7-2*h))>1){
         check = false;
     }
-    else if(Math.abs(h*b*l-v)>(b*l*0.2+h*l*0.2+b*h*0.2)){
+    else if(v.toFixed(1)<=(h*b*l).toFixed(1)-1 || v.toFixed(1)>=(h*b*l).toFixed(1)+1){
         check = false;
     };
     if(check==true){
         $('#zeile'+a).addClass('table-success');
+        //$('#zeile'+a).removeClass('table-danger');
+    } else {
+        $('#zeile'+a).removeClass('table-success');
+        //$('#zeile'+a).removeClass('table-danger');
     }
 };
 
+function move_on(){
+    $("#switch1").prop('disabled', true);
+    $("#switch2").prop('disabled', true);
+    $("#switch3").prop('disabled', true);
+    $("#switch4").prop('disabled', true);
+    $("#switch5").prop('disabled', true);
+    $("#switch6").prop('disabled', true);
+    $("#move_on").addClass('disabled');
+
+}
 
 //ex 1c)
 
@@ -180,22 +194,14 @@ function check_1c_ggb(){
 }
 
 var MQ_b = MathQuill.getInterface(2);
-var MQ_l = MathQuill.noConflict().getInterface(2);
+var MQ_l = MathQuill.getInterface(2);
 var span_b = $('#mathfield_b');
 var span_l = $('#mathfield_l');
 
 var mathField_b=span_b.each(function() {
     MQ_b.MathField(this,{
         handlers: {
-            enter: function() {check_1c_b_formel(mathField_b.text())}
-            //enter: function() {
-                //targetText=mathField.text();
-                //var index;
-                //for (index = 0; index < targetText.length; ++index) {
-                    //console.log("char " + index + ": " + targetText.charCodeAt(index));
-                    //}
-                    //}
-
+            enter: function() {check_1c_b_formel(mathField_b.text())} 
         }
     });
 });
@@ -258,8 +264,23 @@ function check_1d_h(){
     }
 }
 
+function check_h_max_real(){
+    var value = $("#h_max_real").val();
+    if (value=="10.5"){
+        $("#h_max_real").css("background","#D1E7DD");
+    }
+}
+
+function check_h_min_real(){
+    var value = $("#h_min_real").val();
+    if (value=="0"){
+        $("#h_min_real").css("background","#D1E7DD");
+    }
+}
+
+
 function check_1d_table(){
-    
+
     var check=true;
     var i = 0;
     var value = app_1d.getValue("A"+(2+i));
@@ -297,6 +318,19 @@ function fill_table(){
         app_1d.evalCommand("FillRow("+row_number+",{"+h+","+b+","+l+","+v+"})");
         h=h+0.5;
     };
+}
+
+function check_selection_1d(){
+    var element = $('#selection_1d');
+    var value = element.val();
+    if (value=='1'){ 
+        //element.addClass("w-25");
+        element.removeClass("w-75");
+        element.css("background","#D1E7DD");
+        element.css("width","300px");
+        element.prop('disabled', true);
+        check_3_points(); 
+    }
 }
 
 
@@ -388,7 +422,7 @@ function draw_table(){
         if(app_1d.getColor("A"+row_number)=="#FF0000"){
             app_1e.setColor("P_"+i,255,0,0);
         } else {
-        app_1e.setColor("P_"+i,0,191,255);
+            app_1e.setColor("P_"+i,0,191,255);
         };
         app_1e.setFixed("P_"+i,true,false);
     }
@@ -401,6 +435,11 @@ function draw_table(){
     app_1e.registerObjectUpdateListener("A","objectUpdateListener_table");
 };
 
+function draw_graph(){
+    app_1e.evalCommand("V_part=If[x>0 && x<10.5,V(h)]");
+    app_1e.setColor("V_part",121, 49, 223);
+}
+
 
 // reset table and kill listeners
 function clear_table(){
@@ -412,15 +451,6 @@ function clear_table(){
     //app_1c_light.unregisterObjectUpdateListener("ul","objectUpdateListener_1c_light");
 };
 
-$('.orange').hide();
-
-$('.gray, .orange').on(
-    'click',
-    function() 
-    {
-        $('.gray, .orange').toggle()
-    }
-);
 
 function switch2sketch(){
     // switch listener
@@ -504,6 +534,122 @@ function marker(){
         app_1d.setColor("D"+row_number,0,0,0);
     }
 }
+
+
+/*ex_b*/
+function check_h_max(){
+    var value = $("#h_max").val();
+    if(value=='4'){
+        $("#h_max").css("background","#D1E7DD");
+    }
+}
+
+function check_b_max(){
+    var value = $("#b_max").val();
+    if(value=='13'){
+        $("#b_max").css("background","#D1E7DD");
+    }
+}
+
+function check_l_max(){
+    var value = $("#l_max").val();
+    if(value=='21.7'){
+        $("#l_max").css("background","#D1E7DD");
+        activate_switches_1b();
+    }
+}
+
+function activate_switches_1b(){
+    $("#switch1").prop('disabled', false);
+    $("#switch2").prop('disabled', false);
+    $("#switch3").prop('disabled', false);
+    $("#switch4").prop('disabled', false);
+    $("#switch5").prop('disabled', false);
+    $("#switch6").prop('disabled', false);
+    $("#check_1b_ans").css("display","inline");
+    $("#1b_text").css("display","none");
+
+}
+
+function check_1b_ans(){
+    var check = true;
+    if ($("#switch1").is(":checked")==false){
+        check = false;
+    } else if ($("#switch2").is(":checked")==true){
+        check = false;
+    } else if ($("#switch3").is(":checked")==true){
+        check = false;
+    } else if ($("#switch4").is(":checked")==false){
+        check = false;
+    } else if ($("#switch5").is(":checked")==false){
+        check = false;
+    } else if ($("#switch1").is(":checked")==false){
+        check = false;
+    }
+    if (check==true){
+        $("#check_1b_ans").addClass("btn-success disabled");
+    }
+}
+
+
+/*ex_f*/
+//var MQ_v = MathQuill.getInterface(2);
+var MQ_v = MathQuill.noConflict().getInterface(2);
+var span_v = $('#mathfield_v');
+var mathField_v=span_v.each(function() {
+    MQ_b.MathField(this,{
+        handlers: {
+            enter: function() {check_1f_v_formel(mathField_v.text())}
+            //enter: function() {
+                //check_1f_v_formel(mathField_v.text());
+                //targetText=mathField_v.text();
+                //var index;
+                //for (index = 0; index < targetText.length; ++index) {
+                    //console.log("char " + index + ": " + targetText.charCodeAt(index));
+                    //};
+                    //}
+        }
+    })
+});
+
+function check_1f_v_formel(input){
+    console.log(typeof(input));
+    console.log(input);
+    var sol="h(21-2h)(29.7-2h)";
+    var input_replace = input.replace(/−/, "-").replace(/\u200B/g,'');
+    var check = true;
+    var index;
+    for (index = 0; index < sol.length; ++index) {
+        user_input=input_replace.charCodeAt(index);
+        sol_input=sol.charCodeAt(index);
+        if(user_input!=sol_input){
+            console.log(input_replace.charCodeAt(index));
+            console.log(sol.charCodeAt(index));
+            if(user_input==8722 && sol_input==45){
+                check=true;
+            } else {
+                check = false;
+
+            }
+            break;
+        }
+    };
+    if (check==true){
+        $("#mathfield_v").css("background","#D1E7DD");
+        $("#mathfield_v").css("pointer-events","none");
+    }
+
+    //if(input.replace(/−/, "-").replace(/\u200B/g,'')===sol){
+        //console.log("richtig");
+        //$("#mathfield_v").css("background","#D1E7DD");
+        //$("#mathfield_v").css("pointer-events","none"); 
+        //} else {
+            //console.log("falsch");
+
+            //}
+};
+
+
 
 /*end*/
 $(".my-rating").starRating({

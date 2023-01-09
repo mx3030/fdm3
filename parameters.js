@@ -37,7 +37,7 @@ var parameters_1e = {
         "prerelease":false,
         "showAlgebraInput":false,
         "showToolBar":true,
-        "customToolBar":"1|6",
+        "customToolBar":"1|6|40|41|42",
         "borderColor":"white",
         "showMenuBar":false,
         "showResetIcon":false,

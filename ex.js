@@ -660,3 +660,19 @@ $(".my-rating").starRating({
 });
 
 
+
+/*--------move on------------*/
+function move_on_1a(){
+    $("#aufgabe1b").css("display","");
+    $("#move_on_1a").css("display","none");
+}
+
+function move_on_1b_1(){ 
+    $("#aufgabe1b_2").css("display","");
+    $("#move_on_1b_1").css("display","none");
+}
+
+function move_on_1b_2(){ 
+    $("#aufgabe1c").css("display","");
+    $("#move_on_1b_2").css("display","none");
+}

@@ -48,20 +48,20 @@ function check_1b_table_row(a){
     var b = parseFloat($('#zeile'+a+'_b').val());
     var l = parseFloat($('#zeile'+a+'_l').val());
     var v = parseFloat($('#zeile'+a+'_v').val());
-    if(Math.abs(b-(21-2*h))>1){
+    if(b.toFixed(1)!=(21-2*h).toFixed(1)){
         check = false;
-    }else if(Math.abs(l-(29.7-2*h))>1){
+    }else if(l.toFixed(1)!=(29.7-2*h).toFixed(1)){
         check = false;
     }
-    else if(v.toFixed(1)<=(h*b*l).toFixed(1)-1 || v.toFixed(1)>=(h*b*l).toFixed(1)+1){
+    else if(v.toFixed(0)!=(h*b*l).toFixed(0)){
         check = false;
     };
     if(check==true){
         $('#zeile'+a).addClass('table-success');
-        //$('#zeile'+a).removeClass('table-danger');
+        $('#zeile'+a).removeClass('table-danger');
     } else {
         $('#zeile'+a).removeClass('table-success');
-        //$('#zeile'+a).removeClass('table-danger');
+        $('#zeile'+a).addClass('table-danger');
     }
 };
 
